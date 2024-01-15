@@ -3,8 +3,11 @@ package src.utils;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 public class DataStorager extends DataManager {
 
@@ -51,6 +54,13 @@ public class DataStorager extends DataManager {
         ImageData fish_self_0 = new ImageData("./Resource/fishL0.png", false);
         fish_self_0.addCroppingData("FISH_EAT0", 107, 103, 152, 112);
         addImageResource("FISH_SELF0", fish_self_0);
+
+        // 数字0-9
+        ImageData number_red = new ImageData("./Resource/xsdl5.png", false);// 红色
+        for (Integer i = 0; i <= 9; i++) {
+            number_red.addCroppingData("number_red_" + i.toString(), i * 34, 0, 34, 42);
+        }
+        addImageResource("number_red", number_red);
     }
 
     public static BufferedImage getImage(String resourceName, String subImageName) throws IOException {
@@ -75,7 +85,7 @@ public class DataStorager extends DataManager {
         DataStorager ds = new DataStorager();
         System.out.println(getImage("APP_ICON"));
         // sub image
-        BufferedImage bi = getImage("FISH_SELF0", "FISH_EAT0");
+        BufferedImage bi = getImage("number_deepRed", "number_deepRed_9");
         ImageIO.write(bi, "png", new File("./test.png"));
     }
 }

@@ -24,11 +24,23 @@ class ImageData {
         this.resourcePath = resourcePath;
     }
 
-    protected ArrayList<Integer> getCroppingData(String subImageName) {
+    /**
+     * @param name cropped image name
+     * @param data x,y,w,h
+     */
+    void addCroppingData(String subImageName, int... datas) {
+        ArrayList<Integer> croppedSizes = new ArrayList<Integer>();
+        for (Integer data : datas) {
+            croppedSizes.add(data);
+        }
+        croppingData.put(subImageName, croppedSizes);
+    }
+
+    ArrayList<Integer> getCroppingData(String subImageName) {
         return croppingData.get(subImageName);
     }
 
-    protected BufferedImage ImageCropper(String subImageName) throws IOException {
+    BufferedImage ImageCropper(String subImageName) throws IOException {
         BufferedImage image = ImageIO.read(new File(resourcePath));
         ArrayList<Integer> croppingData = getCroppingData(subImageName);
         if (croppingData == null || croppingData.size() != 4)
@@ -41,30 +53,19 @@ class ImageData {
         return croppedImage;
     }
 
-    /**
-     * @param name cropped image name
-     * @param data x,y,w,h
-     */
-    public void addCroppingData(String subImageName, int... datas) {
-        ArrayList<Integer> croppedSizes = new ArrayList<Integer>();
-        for (Integer data : datas) {
-            croppedSizes.add(data);
-        }
-        croppingData.put(subImageName, croppedSizes);
-    }
-
     /** Will Get Full Image */
-    public BufferedImage getImage() throws IOException {
+    BufferedImage getImage() throws IOException {
         BufferedImage image = ImageIO.read(new File(resourcePath));
         return image;
     }
 
     /** Will Get Sub Image */
-    public BufferedImage getImage(String subImageName) throws IOException {
+    BufferedImage getImage(String subImageName) throws IOException {
         if (isFullImage)
             return getImage();
         return ImageCropper(subImageName);
     }
+
 }
 
 public class DataManager {
