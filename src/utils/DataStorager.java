@@ -17,8 +17,12 @@ public class DataStorager extends DataManager {
         // APP ICON
         addImageResource("APP_ICON", new ImageData("./Resource/icon.png"));
 
-        // 主背景
-        addImageResource("BG1", new ImageData("./Resource/bg0.jpg"));
+        // 游戏背景0
+        addImageResource("MAIN_BG0", new ImageData("./Resource/bg0.jpg"));
+        // 游戏背景1
+        addImageResource("MAIN_BG1", new ImageData("./Resource/bg1.jpg"));
+        // 游戏背景2
+        addImageResource("MAIN_BG2", new ImageData("./Resource/bg2.jpg"));
 
         // Main Title
         addImageResource("MAIN_TITLE", new ImageData("./Resource/mainTitle.png"));
@@ -44,8 +48,20 @@ public class DataStorager extends DataManager {
 
         // 得分
         addImageResource("SCORE_TEXT", new ImageData("./Resource/tz_1.png"));
+        // 总得分
+        addImageResource("TOTAL_SCORE_TEXT", new ImageData("./Resource/sls_title.png"));
         // 新纪录
-        addImageResource("SCORE_TEXT", new ImageData("./Resource/tuzhang.png"));
+        addImageResource("NEW_RECORD_ICON", new ImageData("./Resource/tuzhang.png"));
+
+        // 确定
+        addImageResource("CONFIRM_BTN", new ImageData("./Resource/queding0.png"));
+        addImageResource("CONFIRM_PRESS_BTN", new ImageData("./Resource/queding1.png"));
+        // 取消
+        addImageResource("CANCEL_BTN", new ImageData("./Resource/quxiao0.png"));
+        addImageResource("CANCEL_PRESS_BTN", new ImageData("./Resource/quxiao1.png"));
+        // 返回
+        addImageResource("RETURN_BTN", new ImageData("./Resource/return0.png"));
+        addImageResource("RETURN_PRESS_BTN", new ImageData("./Resource/return1.png"));
 
         // 鱼标0
         ImageData fish_self_0 = new ImageData("./Resource/fishL0.png", false);
@@ -71,12 +87,14 @@ public class DataStorager extends DataManager {
 
     public static void main(String[] args) throws IOException {
         // test
-        // full image
         DataStorager ds = new DataStorager();
-        System.out.println(getImage("APP_ICON"));
-        // sub image
-        BufferedImage bi = getImage("FISH_SELF0", "FISH_EAT0");
-        ImageIO.write(bi, "png", new File("./test.png"));
+
+        // full image
+        BufferedImage bi = getImage("RETURN_INDEX_PRESS_BTN");
+        ImageIO.write(bi, "png", new File("./test0.png"));
+        // // sub image
+        // BufferedImage bi = getImage("FISH_SELF0", "FISH_EAT0");
+        // ImageIO.write(bi, "png", new File("./test1.png"));
     }
 }
 

@@ -68,7 +68,7 @@ public class SwingFramer extends JFrame {
     // @Override
     // public void paint(Graphics g) {
     // try {
-    // g.drawImage(DataStorager.getImage("BG1"), 0, 0, null);
+    // g.drawImage(DataStorager.getImage("MAIN_BG0"), 0, 0, null);
     // } catch (IOException e) {
     // e.printStackTrace();
     // }
