@@ -16,25 +16,41 @@ public class DataStorager extends DataManager {
         super();
         // APP ICON
         addImageResource("APP_ICON", new ImageData("./Resource/icon.png"));
+
         // 主背景
         addImageResource("BG1", new ImageData("./Resource/bg0.jpg"));
+
         // Main Title
         addImageResource("MAIN_TITLE", new ImageData("./Resource/mainTitle.png"));
+
         // 开始游戏按钮
         addImageResource("GAME_START_BTN", new ImageData("./Resource/main_go0.png"));
         addImageResource("GAME_START_BTN_PRESS", new ImageData("./Resource/main_go1.png"));
+
         // 加载中文字
         addImageResource("LOADING_TEXT", new ImageData("./Resource/loading.png"));
         // 加载中背景
-        addImageResource("LOADING_TEXT", new ImageData("./Resource/loading.png"));
+        addImageResource("LOADING_TEXT", new ImageData("./Resource/loading1.png"));
+
         // 我的成就按钮
         addImageResource("ACHIVEMENT_BTN", new ImageData("./Resource/main_cj.png"));
         addImageResource("ACHIVEMENT_BTN_PRESS", new ImageData("./Resource/main_cj2.png"));
         // 我的成就栏背景
         addImageResource("ACHIVEMENT_BG", new ImageData("./Resource/bg_chievement.png"));
-        // 制作团队
+
+        // 制作团队按钮
         addImageResource("HELP_TEAM_BTN", new ImageData("./Resource/helpTeam0.png"));
         addImageResource("HELP_TEAM_BTN_PRESS", new ImageData("./Resource/helpTeam1.png"));
+
+        // 得分
+        addImageResource("SCORE_TEXT", new ImageData("./Resource/tz_1.png"));
+        // 新纪录
+        addImageResource("SCORE_TEXT", new ImageData("./Resource/tuzhang.png"));
+
+        // 鱼标0
+        ImageData fish_self_0 = new ImageData("./Resource/fishL0.png", false);
+        fish_self_0.addCroppingData("FISH_EAT0", 107, 103, 152, 112);
+        addImageResource("FISH_SELF0", fish_self_0);
     }
 
     public static BufferedImage getImage(String resourceName, String subImageName) throws IOException {
@@ -55,8 +71,12 @@ public class DataStorager extends DataManager {
 
     public static void main(String[] args) throws IOException {
         // test
+        // full image
         DataStorager ds = new DataStorager();
         System.out.println(getImage("APP_ICON"));
+        // sub image
+        BufferedImage bi = getImage("FISH_SELF0", "FISH_EAT0");
+        ImageIO.write(bi, "png", new File("./test.png"));
     }
 }
 
