@@ -58,6 +58,10 @@ public class SwingFramer extends JFrame {
         if (l != null)
             btn.addActionListener(l);
         getContentPane().add(btn);
+        btn.setBorderPainted(false);
+        btn.setBorder(null);
+        btn.setFocusPainted(false);
+        btn.setContentAreaFilled(false);
         return btn;
     }
 

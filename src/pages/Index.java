@@ -41,11 +41,11 @@ public class Index extends PageBase {
         JButton gameStartBtn = frame.setImageButton(
                 DataStorager.getImage("GAME_START_BTN"),
                 DataStorager.getImage("GAME_START_BTN_PRESS"),
-                0, 0, // *
+                470, 300, // *
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        PageManager.switchPageTo("Loading");
+                        PageManager.switchPageTo("GameMain");
                     }
                 });
         PageManager.addComponent(pageName, "gameStartBtn", gameStartBtn);
@@ -54,7 +54,7 @@ public class Index extends PageBase {
         JButton achivementBtn = frame.setImageButton(
                 DataStorager.getImage("ACHIVEMENT_BTN"),
                 DataStorager.getImage("ACHIVEMENT_BTN_PRESS"),
-                0, 200, // *
+                490, 400, // *
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -67,7 +67,7 @@ public class Index extends PageBase {
         JButton helpTeamBtn = frame.setImageButton(
                 DataStorager.getImage("HELP_TEAM_BTN"),
                 DataStorager.getImage("HELP_TEAM_BTN_PRESS"),
-                800, 0, // *
+                510, 470, // *
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
