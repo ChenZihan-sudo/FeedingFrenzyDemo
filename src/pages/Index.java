@@ -77,7 +77,7 @@ public class Index extends PageBase {
         PageManager.addComponent(pageName, "helpTeamBtn", helpTeamBtn);
 
         // Main background
-        JLabel mainBackground = frame.setBackground(DataStorager.getImage("BG1"), 0, 0);
+        JLabel mainBackground = frame.setBackground(DataStorager.getImage("MAIN_BG0"), 0, 0);
         PageManager.addComponent(pageName, "mainBackground", mainBackground);
     }
 
