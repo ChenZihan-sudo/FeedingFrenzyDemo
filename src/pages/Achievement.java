@@ -1,25 +1,13 @@
 package src.pages;
 
 import javax.swing.*;
-
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
-
-import src.FeedingFrenzy;
 import src.PageManager;
-import src.SwingFramer;
-import src.utils.DataManager;
 import src.utils.DataStorager;
 import src.utils.Utils;
-
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 import src.sql.*;
-
 import java.sql.*;
 import java.util.*;
 import java.util.regex.Pattern;
