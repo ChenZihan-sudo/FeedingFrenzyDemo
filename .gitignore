@@ -24,3 +24,6 @@ replay_pid*
 
 # For mac
 .DS_Store
+
+# disable dll
+*.dll
