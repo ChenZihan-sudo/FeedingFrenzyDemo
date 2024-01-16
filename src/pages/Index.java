@@ -1,23 +1,18 @@
 package src.pages;
 
-import javax.swing.*;
-
-import src.FeedingFrenzy;
-import src.PageManager;
-import src.SwingFramer;
-import src.utils.DataManager;
-import src.utils.DataStorager;
-import src.utils.Utils;
-
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Hashtable;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
+import src.framework.DataStorager;
+import src.framework.PageBase;
+import src.framework.PageManager;
+import src.utils.Utils;
 
 public class Index extends PageBase {
 
@@ -35,7 +30,7 @@ public class Index extends PageBase {
         HashMap<String, Double> mt_map = Utils.getImageOffset(
                 DataStorager.APP_WIDTH / 2, 0.5 * (DataStorager.APP_HEIGHT / 2), mt_bi);
         JLabel mainTitle = frame.setBackground(mt_bi, mt_map.get("width"), mt_map.get("height"));
-        PageManager.addComponent(pageName, "mainTitle", mainTitle);
+        PageManager.addComponent(1, pageName, "mainTitle", mainTitle);
 
         // Game start
         JButton gameStartBtn = frame.setImageButton(
@@ -45,10 +40,15 @@ public class Index extends PageBase {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        PageManager.switchPageTo("GameMain");
+                        PageManager.switchPageTo("Loading");
+                        try {
+                            GameMain.gameLaunch();
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 });
-        PageManager.addComponent(pageName, "gameStartBtn", gameStartBtn);
+        PageManager.addComponent(1, pageName, "gameStartBtn", gameStartBtn);
 
         // My achivement
         JButton achivementBtn = frame.setImageButton(
@@ -58,11 +58,10 @@ public class Index extends PageBase {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("achi");
                         PageManager.switchPageTo("Achievement");
                     }
                 });
-        PageManager.addComponent(pageName, "achivementBtn", achivementBtn);
+        PageManager.addComponent(1, pageName, "achivementBtn", achivementBtn);
 
         // Help team
         JButton helpTeamBtn = frame.setImageButton(
@@ -75,11 +74,18 @@ public class Index extends PageBase {
                         System.out.println("helpTeam touched.");
                     }
                 });
-        PageManager.addComponent(pageName, "helpTeamBtn", helpTeamBtn);
+        PageManager.addComponent(1, pageName, "helpTeamBtn", helpTeamBtn);
+
+        // Decorates
+        JLabel mihoyo = frame.setBackground(DataStorager.getImage("MIHOYO"), 450, 520);
+        PageManager.addComponent(1, pageName, "mihoyo", mihoyo);
+
+        JLabel decorate = frame.setBackground(DataStorager.getImage("DECORATE_ICON"), 1060, 20);
+        PageManager.addComponent(1, pageName, "decorate", decorate);
 
         // Main background
         JLabel mainBackground = frame.setBackground(DataStorager.getImage("MAIN_BG0"), 0, 0);
-        PageManager.addComponent(pageName, "mainBackground", mainBackground);
+        PageManager.addComponent(0, pageName, "mainBackground", mainBackground);
     }
 
     public static void main(String[] args) throws IOException {

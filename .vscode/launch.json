@@ -1,0 +1,146 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "video",
+            "request": "launch",
+            "mainClass": "test.video",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "type": "java",
+            "name": "Loading",
+            "request": "launch",
+            "mainClass": "src.pages.Loading",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "name": "Java",
+            "type": "java",
+            "request": "launch",
+            "stopOnEntry": true,
+            "jdkPath": "${env:JAVA_HOME}/bin",
+            "cwd": "${fileDirname}",
+            "startupClass": "${fileBasenameNoExtension}",
+            "classpath": [
+                ".",
+                "${fileDirname}"
+            ]
+        },
+        {
+            "name": "Java Console App",
+            "type": "java",
+            "request": "launch",
+            "stopOnEntry": true,
+            "jdkPath": "${env:JAVA_HOME}/bin",
+            "cwd": "${fileDirname}",
+            "startupClass": "${fileBasenameNoExtension}",
+            "classpath": [
+                ".",
+                "${fileDirname}"
+            ],
+            "externalConsole": true
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "FeedingFrenzy",
+            "request": "launch",
+            "mainClass": "src.FeedingFrenzy",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "type": "java",
+            "name": "SqlRequester",
+            "request": "launch",
+            "mainClass": "src.database.SqlRequester",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "type": "java",
+            "name": "DataStorager",
+            "request": "launch",
+            "mainClass": "src.framework.DataStorager",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "type": "java",
+            "name": "PageManager",
+            "request": "launch",
+            "mainClass": "src.framework.PageManager",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "type": "java",
+            "name": "Achievement",
+            "request": "launch",
+            "mainClass": "src.pages.Achievement",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "type": "java",
+            "name": "GameMain",
+            "request": "launch",
+            "mainClass": "src.pages.GameMain",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "type": "java",
+            "name": "Index",
+            "request": "launch",
+            "mainClass": "src.pages.Index",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "type": "java",
+            "name": "Cropper",
+            "request": "launch",
+            "mainClass": "test.Cropper",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "type": "java",
+            "name": "Demo1",
+            "request": "launch",
+            "mainClass": "test.Demo1",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "type": "java",
+            "name": "Demo2",
+            "request": "launch",
+            "mainClass": "test.Demo2",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "type": "java",
+            "name": "GridBagDemo",
+            "request": "launch",
+            "mainClass": "test.GridBagDemo",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "type": "java",
+            "name": "JLayerSample",
+            "request": "launch",
+            "mainClass": "test.JLayerSample",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        },
+        {
+            "type": "java",
+            "name": "LayoutDemo",
+            "request": "launch",
+            "mainClass": "test.LayoutDemo",
+            "projectName": "FeedingFrenzyDemo_29b3dfd8"
+        }
+    ]
+}

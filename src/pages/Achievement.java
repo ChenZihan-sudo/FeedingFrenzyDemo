@@ -1,17 +1,22 @@
 package src.pages;
 
-import javax.swing.*;
-import src.PageManager;
-import src.utils.DataStorager;
-import src.utils.Utils;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import src.sql.*;
-import java.sql.*;
-import java.util.*;
-import java.util.regex.Pattern;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
+import src.database.SqlRequester;
+import src.framework.DataStorager;
+import src.framework.PageBase;
+import src.framework.PageManager;
+import src.utils.Utils;
 
 public class Achievement extends PageBase {
     public Achievement() throws IOException {
@@ -34,7 +39,7 @@ public class Achievement extends PageBase {
 
     private void display_achievements() throws IOException, SQLException {
         // sql request
-        sqlrequest request = new sqlrequest("feedingfrenzy", "192.168.31.166:3306", "root", "sql12119370317");
+        SqlRequester request = new SqlRequester("feedingfrenzy", "192.168.31.166:3306", "root", "sql12119370317");
         ResultSet rs;
         ArrayList<String> achievement_array = new ArrayList<>();
         rs = request.get_data("SELECT id,achievements  FROM user_data where id =2");
@@ -54,8 +59,7 @@ public class Achievement extends PageBase {
         int word_offset_X = -10;// 字体与图片的偏移量
         int word_offset_Y = 80;
         for (Integer i = 0; i < achievement_array.size(); i++) {
-            System.out.println(achievement_array.get(i).getClass().getSimpleName());
-            PageManager.addComponent(pageName, "achievements_get",
+            PageManager.addComponent(2, pageName, "achievements_get",
                     frame.setBackground(DataStorager.getImage(achievement_array.get(i)),
                             startX + i * width_offset % (width_offset * colmun_num),
                             startY + i / colmun_num * height_offset));
@@ -63,8 +67,7 @@ public class Achievement extends PageBase {
             // System.out.println(startY + i / colmun_num * height_offset);
             String achievement2replace = "ACHIEVEMENTS_GET";
             String achievement_id = achievement_array.get(i).replace(achievement2replace, "");
-            System.out.println(achievement_id);
-            PageManager.addComponent(pageName, "achievements_name",
+            PageManager.addComponent(2, pageName, "achievements_name",
                     frame.setBackground(DataStorager.getImage("ACHIEVEMENTS_NAME" + achievement_id),
                             startX + i * width_offset % (width_offset * colmun_num) + word_offset_X,
                             startY + i / colmun_num * height_offset + word_offset_Y));
@@ -84,7 +87,7 @@ public class Achievement extends PageBase {
                         PageManager.switchPageTo("Index");
                     }
                 });
-        PageManager.addComponent(pageName, "returnIndexBtn", returnIndexBtn);
+        PageManager.addComponent(1, pageName, "returnIndexBtn", returnIndexBtn);
 
         // 添加成就
         try {
@@ -96,11 +99,11 @@ public class Achievement extends PageBase {
         }
         // 成就背景
         JLabel background = frame.setBackground(DataStorager.getImage("ACHIEVEMENT_BG"), 150, 50);
-        PageManager.addComponent(pageName, "background", background);
+        PageManager.addComponent(1, pageName, "background", background);
 
         // 大背景
         JLabel main_background = frame.setBackground(DataStorager.getImage("MAIN_BG2"), 0, 0);
-        PageManager.addComponent(pageName, "main_background", main_background);
+        PageManager.addComponent(0, pageName, "main_background", main_background);
 
     }
 
