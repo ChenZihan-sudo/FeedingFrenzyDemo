@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import src.framework.components.MaskLayer;
+import src.game.LabelPaintCallback;
 
 public class SwingFramer extends JFrame {
 
@@ -44,6 +45,22 @@ public class SwingFramer extends JFrame {
         return labelBG;
     }
 
+    public JLabel setLabelPaint(LabelPaintCallback cb) {
+        JLabel labelBG = new JLabel() {
+            @Override
+            public void paint(Graphics g) {
+                super.paint(g);
+                try {
+                    cb.call(g);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        // getLayeredPane().add(labelBG);
+        return labelBG;
+    }
+
     public JButton setImageButton(Image icon, Image iconPressed, double x, double y, ActionListener l) {
         JButton btn = new JButton();
         ImageIcon imageIcon = new ImageIcon(icon);
@@ -70,16 +87,14 @@ public class SwingFramer extends JFrame {
 
     // @Override
     // public void paint(Graphics g) {
-    // try {
-    // g.drawImage(DataStorager.getImage("MAIN_BG0"), 0, 0, null);
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
+    // PageBase pb = PageManager.getActivedPageBase();
+    // pb.paint(g);
     // }
 
-    // @Override
-    // public void paintComponents(Graphics g) {
-    // // TODO Auto-generated method stub
-    // super.paintComponents(g);
-    // }
+    @Override
+    public void paint(Graphics g) {
+        PageBase pb = PageManager.getActivedPageBase();
+        pb.paint(g);
+        super.paint(g);
+    }
 }

@@ -1,5 +1,6 @@
 package src.framework;
 
+import java.awt.Graphics;
 import java.io.IOException;
 
 import javax.swing.JLayeredPane;
@@ -20,7 +21,7 @@ public class PageBase {
         this.pageName = pageName;
         frame = FeedingFrenzy.getFrame();
         PageManager.createPage(pageName, this);
-        pageComponentInitialize();
+        pageInitialize();
     }
 
     public JLayeredPane getLayeredPane() {
@@ -36,10 +37,18 @@ public class PageBase {
     }
 
     // Override this.
-    public void pageComponentInitialize() throws IOException {
+    public void pageInitialize() throws IOException {
     }
 
     // Override this.
-    public void pageReleaser() {
+    public void pageLoad() throws IOException {
+    }
+
+    // Override this.
+    public void pageRelease() {
+    }
+
+    // Override this.
+    public void paint(Graphics g) {
     }
 }

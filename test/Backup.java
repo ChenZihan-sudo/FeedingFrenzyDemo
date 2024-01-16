@@ -1,6 +1,5 @@
 package src.framework;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.function.BiConsumer;
@@ -8,7 +7,39 @@ import java.util.function.BiConsumer;
 import javax.swing.JComponent;
 import javax.swing.JLayeredPane;
 
-import src.framework.components.ComponentInfo;
+class ComponentInfo {
+    /**
+     * StatusKey:
+     * 1. Default
+     * 2. PageSwitch: default is statusKey Default
+     */
+
+    private Hashtable<String, Boolean> visibleStatus = new Hashtable<>();
+
+    ComponentInfo(Boolean _default) {
+        setDefaultVisibleStatus(_default);
+        setVisibleStatus("PageSwitch", _default);
+    }
+
+    public void setDefaultVisibleStatus(Boolean visible) {
+        visibleStatus.put("Default", visible);
+    }
+
+    public void setVisibleStatus(String statusKey, Boolean visible) {
+        visibleStatus.put(statusKey, visible);
+    }
+
+    public Boolean getVisibleStatus(String statusKey) throws Exception {
+        if (visibleStatus.get(statusKey) == null)
+            throw new Exception("warn: statusKey not found.");
+        return visibleStatus.get(statusKey);
+    }
+
+    // void setVisibleProxy(String statusKey, Boolean aFlag) {
+    // visibleStatus.get(statusKey);
+    // setVisible(visibleStatus.get(statusKey));
+    // }
+}
 
 class PageContainer {
 
@@ -118,7 +149,14 @@ public class PageManager {
         if (container == null)
             return null;
         container.getComponents().forEach((key, value) -> {
-            value.setVisible(false);
+            // ComponentInfo cinfo = container.getComponentInfo(key);
+            // if (cinfo != null)
+            //     try {
+            //         value.setVisible(cinfo.getVisibleStatus("PageSwitch"));
+            //     } catch (Exception e) {
+            //         e.printStackTrace();
+            //     }
+            value.setVisible(true);
         });
         return container;
     }
@@ -137,29 +175,10 @@ public class PageManager {
         }
 
         // Show page components
-        PageContainer toPageContainer = pages.get(pageName);
+        PageContainer toPageContainer = setAllVisible(pageName, true);
         if (toPageContainer == null)
             return null;
         activedPage = toPageContainer.getPageBase().getPageName();
-
-        // Set page switch status visible
-        toPageContainer.getComponents().forEach((key, value) -> {
-            ComponentInfo cinfo = toPageContainer.getComponentInfo(key);
-            if (cinfo != null)
-                try {
-                    value.setVisible(cinfo.getVisibleStatus("PageSwitch"));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-        });
-
-        // Load page
-        try {
-            toPageContainer.getPageBase().pageLoad();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
 
         // Switch the layeredPane to current page
         JLayeredPane layeredPane = toPageContainer.getPageBase().getLayeredPane();
@@ -169,11 +188,6 @@ public class PageManager {
         }
 
         return toPageContainer;
-    }
-
-    public static PageBase getActivedPageBase() {
-        PageContainer page = pages.get(activedPage);
-        return page.getPageBase();
     }
 
     public static void main(String[] args) {

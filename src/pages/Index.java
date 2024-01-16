@@ -23,7 +23,7 @@ public class Index extends PageBase {
     }
 
     @Override
-    public void pageComponentInitialize() throws IOException {
+    public void pageInitialize() throws IOException {
 
         // Main title
         BufferedImage mt_bi = DataStorager.getImage("MAIN_TITLE");

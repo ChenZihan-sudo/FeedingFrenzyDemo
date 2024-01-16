@@ -15,6 +15,7 @@ public class GameDriver {
     protected static SwingFramer frame;
     protected static KeyListener keyListener;
     protected static MouseMotionListener mouseMotionListener;
+    protected static MouseMotionCallback motionCb;
 
     public GameDriver() {
         frame = FeedingFrenzy.getFrame();
@@ -92,21 +93,28 @@ public class GameDriver {
             @Override
             public void mouseMoved(MouseEvent e) {
                 Point point = e.getPoint();
-                System.out.println("Mouse Position: " + point);
+                motionCb.call(point);
+                // System.out.println("Mouse Position: " + point);
             }
 
         };
     }
 
+    public static void setMotionCb(MouseMotionCallback motionCb) {
+        GameDriver.motionCb = motionCb;
+    }
+
     public static void loadGameDriver() {
         frame.addKeyListener(keyListener);
         frame.addMouseMotionListener(mouseMotionListener);
-        
+        System.out.println("Game driver loaded.");
+
     }
 
     public static void removeGameDriver() {
         frame.removeKeyListener(keyListener);
         frame.removeMouseMotionListener(mouseMotionListener);
+        System.out.println("Game driver removed.");
     }
 
 }

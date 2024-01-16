@@ -5,10 +5,19 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import javax.swing.JLabel;
 import javax.swing.text.Position;
+
+import com.mysql.cj.util.Util;
+
+import src.FeedingFrenzy;
+import src.framework.PageManager;
+import src.framework.SwingFramer;
+import src.utils.Utils;
 
 class EatInfo {
     public Boolean isEatRange;
@@ -17,16 +26,58 @@ class EatInfo {
 
 public class Fish {
 
+    protected static final int upperSiderBarHeight = FeedingFrenzy.upperSiderBarHeight;
+
     protected Point2D position = null;
+
     protected BufferedImage fishImage = null;
+    protected BufferedImage leftTowardImage = null;
+    protected BufferedImage rightTowardImage = null;
+
     protected Boolean isLeftTowards = true;
 
-    public Fish(int x, int y, BufferedImage fishImage) {
-        this.position = new Point2D.Float(x, y);
+    protected SwingFramer frame;
+    protected JLabel fish = null;
+    protected Graphics graphic = null;
+
+    protected String fishName = null;
+
+    protected float fishScale = 0.5f;
+
+    public Fish(String fishName, BufferedImage fishImage) {
+        frame = FeedingFrenzy.getFrame();
+        this.fishImage = fishImage;
+
+        leftTowardImage = fishImage;
+        rightTowardImage = Utils.revertImage(fishImage);
+
+        this.fishImage = rightTowardImage;
+
+        fish = frame.setLabelPaint(new LabelPaintCallback() {
+            @Override
+            public void call(Graphics g) throws IOException {
+                graphic = g;
+                draw();
+            }
+        });
+        PageManager.addComponent(10, "GameMain", fishName, fish);
     }
 
-    public void setFishImage(BufferedImage fishImage) {
-        this.fishImage = fishImage;
+    public void draw() {
+        graphic.drawImage(fishImage, 0, 0, getFishWidth(), getFishHeight(), null);
+    }
+
+    public void setFishPosition(Point p) {
+        fish.setBounds((int) p.getX(), (int) p.getY() - upperSiderBarHeight, getFishWidth(), getFishHeight());
+        fish.repaint();
+    }
+
+    public Integer getFishHeight() {
+        return (int) (fishImage.getHeight() * fishScale);
+    }
+
+    public Integer getFishWidth() {
+        return (int) (fishImage.getWidth() * fishScale);
     }
 
     public void setPosition(Integer x, Integer y) {
@@ -41,13 +92,6 @@ public class Fish {
         }
 
         position.setLocation(x, y);
-    }
-
-    public void draw(Graphics g) {
-        g.drawImage(fishImage,
-                (int) position.getX(), (int) position.getY(),
-                fishImage.getWidth(), fishImage.getHeight(),
-                null);
     }
 
     public Rectangle getRectangle() {

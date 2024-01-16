@@ -76,7 +76,7 @@ public class Achievement extends PageBase {
     }
 
     @Override
-    public void pageComponentInitialize() throws IOException {
+    public void pageInitialize() throws IOException {
         JButton returnIndexBtn = frame.setImageButton(
                 DataStorager.getImage("RETURN_BTN"),
                 DataStorager.getImage("RETURN_PRESS_BTN"),
