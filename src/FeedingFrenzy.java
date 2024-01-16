@@ -43,7 +43,7 @@ public class FeedingFrenzy {
 
         PageManager.switchPageTo("GameMain");
         GameMain.gameLaunch();
-        GameDriver.loadGameDriver();
+        // GameDriver.loadGameDriver();
 
         frame.setVisible(true);
     }
