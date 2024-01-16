@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import src.pages.Achievement;
 import src.pages.GameMain;
 import src.pages.Index;
 import src.pages.Loading;
@@ -31,7 +32,8 @@ public class FeedingFrenzy {
         Index indexFrame = new Index();
         Loading loading = new Loading();
         GameMain gameMain = new GameMain();
-
+        Achievement achievement = new Achievement();
         frame.setVisible(true);
     }
+
 }

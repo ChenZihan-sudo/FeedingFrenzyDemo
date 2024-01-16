@@ -77,6 +77,19 @@ public class DataStorager extends DataManager {
             number_red.addCroppingData("number_red_" + i.toString(), i * 34, 0, 34, 42);
         }
         addImageResource("number_red", number_red);
+
+        // 成就背景
+        addImageResource("ACHIEVEMENT_BG", new ImageData("./Resource/bg_chievement.png"));
+
+        // 成就图标
+        for (Integer i = 1; i <= 24; i++) {
+            addImageResource("ACHIEVEMENTS_GET" + i.toString(),
+                    new ImageData("./Resource/chengjiu_" + i.toString() + ".png"));
+            addImageResource("ACHIEVEMENTS_NOTGET" + i.toString(),
+                    new ImageData("./Resource/chengjiu_" + i.toString() + "_" + i.toString() + ".png"));
+            addImageResource("ACHIEVEMENTS_NAME" + i.toString(),
+                    new ImageData("./Resource/chengjiu_" + i.toString() + "name.png"));
+        }
     }
 
     public static BufferedImage getImage(String resourceName, String subImageName) throws IOException {
@@ -100,13 +113,8 @@ public class DataStorager extends DataManager {
         DataStorager ds = new DataStorager();
         System.out.println(getImage("APP_ICON"));
         // sub image
-        BufferedImage bi = getImage("number_deepRed", "number_deepRed_9");
+        BufferedImage bi = getImage("ACHIEVEMENTS_GET1");
         ImageIO.write(bi, "png", new File("./test.png"));
-
-        // full image
-        BufferedImage bi = getImage("RETURN_INDEX_PRESS_BTN");
-        ImageIO.write(bi, "png", new File("./test0.png"));
-        // // sub image
         // BufferedImage bi = getImage("FISH_SELF0", "FISH_EAT0");
         // ImageIO.write(bi, "png", new File("./test1.png"));
     }
