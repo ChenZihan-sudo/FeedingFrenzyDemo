@@ -17,6 +17,7 @@ import javax.swing.JLayeredPane;
 import src.framework.DataStorager;
 import src.framework.PageBase;
 import src.framework.PageManager;
+import src.framework.components.ComponentInfo;
 import src.framework.components.MaskLayer;
 import src.game.GameDriver;
 import src.utils.Utils;
@@ -33,7 +34,7 @@ public class GameMain extends PageBase {
     }
 
     @Override
-    public void pageComponentInitialize() throws IOException {
+    public void pageInitialize() throws IOException {
 
         // Main background
         JLabel mainBackground = frame.setBackground(DataStorager.getImage("MAIN_BG1"), 0, 0);
@@ -54,22 +55,23 @@ public class GameMain extends PageBase {
 
         // Mask layer
         MaskLayer maskLayer = frame.setMaskLayer();
-        PageManager.addComponent(2, pageName, "maskLayer", maskLayer);
+        PageManager.addComponent(2, pageName, "maskLayer", maskLayer, new ComponentInfo(false));
     }
 
     @Override
-    public void pageReleaser() {
+    public void pageLoad() throws IOException {
+        GameDriver.loadGameDriver();
+        gameLaunch();
+    }
+
+    @Override
+    public void pageRelease() {
+        gameLaunched = false;
         GameDriver.removeGameDriver();
     }
 
-    public static void gameLaunch() throws IOException {
-
-        // Disable mask layer
-        MaskLayer maskLayer = (MaskLayer) PageManager.getComponent(pageName, "maskLayer");
-        maskLayer.setVisible(false);
-
+    public void gameLaunch() throws IOException {
         gameLaunched = true;
-
     }
 
     public static void main(String[] args) {

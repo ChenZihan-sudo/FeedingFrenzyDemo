@@ -15,6 +15,6 @@ public class MaskLayer extends JComponent {
     @Override
     public void setVisible(boolean aFlag) {
         super.setVisible(aFlag);
-        System.out.printf("Input visible %b\n", aFlag);
+        System.out.printf("Set mask layer visible: %b\n", aFlag);
     }
 }

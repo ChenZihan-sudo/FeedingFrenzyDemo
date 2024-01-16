@@ -42,7 +42,6 @@ public class FeedingFrenzy {
         // PageManager.switchPageTo("Index");
 
         PageManager.switchPageTo("GameMain");
-        GameMain.gameLaunch();
         // GameDriver.loadGameDriver();
 
         frame.setVisible(true);

@@ -67,7 +67,7 @@ public class Achievement extends PageBase {
         int word_offset_X = -10;// 字体与图片的偏移量
         int word_offset_Y = 80;
         for (Integer i = 0; i < achievement_array.size(); i++) {
-            System.out.println(achievement_array.get(i).getClass().getSimpleName());
+            // System.out.println(achievement_array.get(i).getClass().getSimpleName());
             PageManager.addComponent(2, pageName, "achievements_get",
                     frame.setBackground(DataStorager.getImage(achievement_array.get(i)),
                             startX + i * width_offset % (width_offset * colmun_num),
@@ -76,7 +76,7 @@ public class Achievement extends PageBase {
             // System.out.println(startY + i / colmun_num * height_offset);
             String achievement2replace = "ACHIEVEMENTS_GET";
             String achievement_id = achievement_array.get(i).replace(achievement2replace, "");
-            System.out.println(achievement_id);
+            // System.out.println(achievement_id);
             PageManager.addComponent(2, pageName, "achievements_name",
                     frame.setBackground(DataStorager.getImage("ACHIEVEMENTS_NAME" + achievement_id),
                             startX + i * width_offset % (width_offset * colmun_num) + word_offset_X,
@@ -86,7 +86,7 @@ public class Achievement extends PageBase {
     }
 
     @Override
-    public void pageComponentInitialize() throws IOException {
+    public void pageInitialize() throws IOException {
         JButton returnIndexBtn = frame.setImageButton(
                 DataStorager.getImage("RETURN_BTN"),
                 DataStorager.getImage("RETURN_PRESS_BTN"),

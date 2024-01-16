@@ -20,7 +20,7 @@ public class Loading extends PageBase {
     }
 
     @Override
-    public void pageComponentInitialize() throws IOException {
+    public void pageInitialize() throws IOException {
         BufferedImage mt_bi = DataStorager.getImage("MAIN_TITLE");
         HashMap<String, Double> mt_map = Utils.getImageOffset(
                 DataStorager.APP_WIDTH / 2, 0.5 * (DataStorager.APP_HEIGHT / 2), mt_bi);

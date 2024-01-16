@@ -101,12 +101,14 @@ public class GameDriver {
     public static void loadGameDriver() {
         frame.addKeyListener(keyListener);
         frame.addMouseMotionListener(mouseMotionListener);
+        System.out.println("Game driver loaded.");
         
     }
 
     public static void removeGameDriver() {
         frame.removeKeyListener(keyListener);
         frame.removeMouseMotionListener(mouseMotionListener);
+        System.out.println("Game driver removed.");
     }
 
 }
