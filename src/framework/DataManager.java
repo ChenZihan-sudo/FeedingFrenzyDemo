@@ -1,4 +1,4 @@
-package src.utils;
+package src.framework;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -26,7 +26,7 @@ class ImageData {
 
     /**
      * @param name cropped image name
-     * @param data x,y,w,h
+     * @param data x, y, w, h
      */
     void addCroppingData(String subImageName, int... datas) {
         ArrayList<Integer> croppedSizes = new ArrayList<Integer>();

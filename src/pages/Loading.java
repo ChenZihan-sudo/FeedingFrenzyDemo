@@ -6,8 +6,9 @@ import java.util.HashMap;
 
 import javax.swing.JLabel;
 
-import src.PageManager;
-import src.utils.DataStorager;
+import src.framework.DataStorager;
+import src.framework.PageBase;
+import src.framework.PageManager;
 import src.utils.Utils;
 
 public class Loading extends PageBase {
@@ -24,6 +25,6 @@ public class Loading extends PageBase {
         HashMap<String, Double> mt_map = Utils.getImageOffset(
                 DataStorager.APP_WIDTH / 2, 0.5 * (DataStorager.APP_HEIGHT / 2), mt_bi);
         JLabel mainTitle = frame.setBackground(mt_bi, mt_map.get("width"), mt_map.get("height"));
-        PageManager.addComponent(pageName, "mainTitle", mainTitle);
+        PageManager.addComponent(1, pageName, "mainTitle", mainTitle);
     }
 }

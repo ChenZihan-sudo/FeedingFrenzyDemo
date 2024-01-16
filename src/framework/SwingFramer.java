@@ -1,5 +1,6 @@
-package src;
+package src.framework;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -12,10 +13,12 @@ import java.util.Hashtable;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 
-import src.utils.DataStorager;
+import src.framework.components.MaskLayer;
 
 public class SwingFramer extends JFrame {
 
@@ -34,7 +37,8 @@ public class SwingFramer extends JFrame {
         setMinimumSize(new Dimension(DataStorager.APP_WIDTH, DataStorager.APP_HEIGHT));
         setMaximumSize(new Dimension(DataStorager.APP_WIDTH, DataStorager.APP_HEIGHT));
         setResizable(false);
-
+        setFocusable(true);
+        
         setLocationRelativeTo(rootPane);
     }
 
@@ -43,7 +47,7 @@ public class SwingFramer extends JFrame {
         ImageIcon imageIcon = new ImageIcon(image);
         labelBG.setIcon(imageIcon);
         labelBG.setBounds((int) x, (int) y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
-        getContentPane().add(labelBG);
+        getLayeredPane().add(labelBG);
         return labelBG;
     }
 
@@ -57,12 +61,19 @@ public class SwingFramer extends JFrame {
         btn.setPressedIcon(imageIconPressed);
         if (l != null)
             btn.addActionListener(l);
-        getContentPane().add(btn);
+        getLayeredPane().add(btn);
         btn.setBorderPainted(false);
         btn.setBorder(null);
         btn.setFocusPainted(false);
         btn.setContentAreaFilled(false);
         return btn;
+    }
+
+    public MaskLayer setMaskLayer() {
+        MaskLayer maskLayer = new MaskLayer();
+        maskLayer.setBounds(0, 0, getWidth(), getHeight());
+        getLayeredPane().add(maskLayer);
+        return maskLayer;
     }
 
     // @Override
@@ -72,5 +83,11 @@ public class SwingFramer extends JFrame {
     // } catch (IOException e) {
     // e.printStackTrace();
     // }
+    // }
+
+    // @Override
+    // public void paintComponents(Graphics g) {
+    // // TODO Auto-generated method stub
+    // super.paintComponents(g);
     // }
 }

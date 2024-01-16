@@ -1,8 +1,8 @@
-package src.sql;
+package src.database;
 
 import java.sql.*;
 
-public class sqlrequest {
+public class SqlRequester {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     String DB_URL;
     Connection conn;
@@ -11,7 +11,7 @@ public class sqlrequest {
     String PASS;
     ResultSet resultSet;
 
-    public sqlrequest(String database_name, String IPv4Andpost, String user_name, String PASS) {
+    public SqlRequester(String database_name, String IPv4Andpost, String user_name, String PASS) {
         this.DB_URL = "jdbc:mysql://" + IPv4Andpost + "/" + database_name
                 + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
         this.USER = user_name;
@@ -57,7 +57,7 @@ public class sqlrequest {
     }
 
     public static void main(String[] args) {
-        sqlrequest request = new sqlrequest("feedingfrenzy", "192.168.31.166:3306", "root", "sql12119370317");
+        SqlRequester request = new SqlRequester("feedingfrenzy", "192.168.31.166:3306", "root", "sql12119370317");
         ResultSet rs;
         // rs = request.get_data("SELECT id, user_name, password, highest_score FROM
         // user_data");
