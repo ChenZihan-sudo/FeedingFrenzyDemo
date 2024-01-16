@@ -1,20 +1,14 @@
 package src.pages;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.HashMap;
 
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JLayer;
-import javax.swing.JLayeredPane;
 
 import src.framework.DataStorager;
 import src.framework.PageBase;
@@ -23,7 +17,6 @@ import src.framework.components.ComponentInfo;
 import src.framework.components.MaskLayer;
 import src.game.Fish;
 import src.game.GameDriver;
-import src.game.LabelPaintCallback;
 import src.game.MouseMotionCallback;
 import src.utils.Utils;
 
@@ -63,7 +56,7 @@ public class GameMain extends PageBase {
         PageManager.addComponent(200, pageName, "maskLayer", maskLayer, new ComponentInfo(false));
 
         // Background item
-        JLabel back_item_1 = frame.setBackground(DataStorager.getImage("MAIN_BG1_1"), 0,470);
+        JLabel back_item_1 = frame.setBackground(DataStorager.getImage("MAIN_BG1_1"), 0, 470);
         PageManager.addComponent(5, pageName, "backItem1", back_item_1);
         JLabel back_item_2 = frame.setBackground(DataStorager.getImage("MAIN_BG1_2"), 520, 540);
         PageManager.addComponent(5, pageName, "backItem2", back_item_2);
@@ -76,6 +69,9 @@ public class GameMain extends PageBase {
 
     @Override
     public void pageLoad() throws IOException {
+
+        System.out.println("game page loaded.");
+
         GameDriver.loadGameDriver();
 
         // Set self fish motion

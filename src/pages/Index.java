@@ -41,11 +41,6 @@ public class Index extends PageBase {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         PageManager.switchPageTo("Loading");
-                        try {
-                            GameMain.gameLaunch();
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                        }
                     }
                 });
         PageManager.addComponent(1, pageName, "gameStartBtn", gameStartBtn);

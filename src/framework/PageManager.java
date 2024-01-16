@@ -1,9 +1,7 @@
 package src.framework;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.function.BiConsumer;
 
 import javax.swing.JComponent;
 import javax.swing.JLayeredPane;
@@ -147,6 +145,7 @@ public class PageManager {
             ComponentInfo cinfo = toPageContainer.getComponentInfo(key);
             if (cinfo != null)
                 try {
+                    System.out.printf("组件状态：%b\n", cinfo.getVisibleStatus("PageSwitch"));
                     value.setVisible(cinfo.getVisibleStatus("PageSwitch"));
                 } catch (Exception e) {
                     e.printStackTrace();

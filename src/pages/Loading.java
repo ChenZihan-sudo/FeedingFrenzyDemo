@@ -30,7 +30,7 @@ public class Loading extends PageBase {
     };
 
     @Override
-    public void pageComponentInitialize() throws IOException {
+    public void pageInitialize() throws IOException {
 
         JLabel yuanshenQidong = new JLabel();
         ImageIcon imageIcon = new ImageIcon("Resource/yuanshen.gif");
@@ -65,13 +65,18 @@ public class Loading extends PageBase {
                 });
         PageManager.addComponent(1, pageName, "skipToGameBtn", skipToGameBtn);
 
-        //
+        // Wait for anime
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             public void run() {
                 System.out.println("Timer runned.");
                 PageManager.switchPageTo("GameMain");
             }
-        }, 16500);
+        }, 14000);
+    }
+
+    @Override
+    public void pageLoad() {
+
     }
 }
