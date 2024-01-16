@@ -17,6 +17,8 @@ import src.pages.Loading;
 
 public class FeedingFrenzy {
 
+    public final static int upperSiderBarHeight = 27;
+
     protected static SwingFramer frame = new SwingFramer();
 
     public static SwingFramer getFrame() {

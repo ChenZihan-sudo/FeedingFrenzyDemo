@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 import src.framework.components.MaskLayer;
+import src.game.LabelPaintCallback;
 
 public class SwingFramer extends JFrame {
 
@@ -38,7 +39,7 @@ public class SwingFramer extends JFrame {
         setMaximumSize(new Dimension(DataStorager.APP_WIDTH, DataStorager.APP_HEIGHT));
         setResizable(false);
         setFocusable(true);
-        
+
         setLocationRelativeTo(rootPane);
     }
 
@@ -47,7 +48,23 @@ public class SwingFramer extends JFrame {
         ImageIcon imageIcon = new ImageIcon(image);
         labelBG.setIcon(imageIcon);
         labelBG.setBounds((int) x, (int) y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
-        getLayeredPane().add(labelBG);
+        // getLayeredPane().add(labelBG);
+        return labelBG;
+    }
+
+    public JLabel setLabelPaint(LabelPaintCallback cb) {
+        JLabel labelBG = new JLabel() {
+            @Override
+            public void paint(Graphics g) {
+                super.paint(g);
+                try {
+                    cb.call(g);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        // getLayeredPane().add(labelBG);
         return labelBG;
     }
 
@@ -61,7 +78,7 @@ public class SwingFramer extends JFrame {
         btn.setPressedIcon(imageIconPressed);
         if (l != null)
             btn.addActionListener(l);
-        getLayeredPane().add(btn);
+        // getLayeredPane().add(btn);
         btn.setBorderPainted(false);
         btn.setBorder(null);
         btn.setFocusPainted(false);
@@ -78,16 +95,14 @@ public class SwingFramer extends JFrame {
 
     // @Override
     // public void paint(Graphics g) {
-    // try {
-    // g.drawImage(DataStorager.getImage("MAIN_BG0"), 0, 0, null);
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
+    // PageBase pb = PageManager.getActivedPageBase();
+    // pb.paint(g);
     // }
 
-    // @Override
-    // public void paintComponents(Graphics g) {
-    // // TODO Auto-generated method stub
-    // super.paintComponents(g);
-    // }
+    @Override
+    public void paint(Graphics g) {
+        PageBase pb = PageManager.getActivedPageBase();
+        pb.paint(g);
+        super.paint(g);
+    }
 }

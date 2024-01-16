@@ -171,6 +171,11 @@ public class PageManager {
         return toPageContainer;
     }
 
+    public static PageBase getActivedPageBase() {
+        PageContainer page = pages.get(activedPage);
+        return page.getPageBase();
+    }
+
     public static void main(String[] args) {
 
     }

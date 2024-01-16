@@ -1,5 +1,6 @@
 package src.framework;
 
+import java.awt.Graphics;
 import java.io.IOException;
 
 import javax.swing.JLayeredPane;
@@ -45,5 +46,9 @@ public class PageBase {
 
     // Override this.
     public void pageRelease() {
+    }
+
+    // Override this.
+    public void paint(Graphics g) {
     }
 }
