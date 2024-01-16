@@ -90,6 +90,9 @@ public class DataStorager extends DataManager {
             addImageResource("ACHIEVEMENTS_NAME" + i.toString(),
                     new ImageData("./Resource/chengjiu_" + i.toString() + "name.png"));
         }
+        addImageResource("MAIN_BG1_1", new ImageData("./Resource/bg1_0.png"));
+        addImageResource("MAIN_BG1_2", new ImageData("./Resource/bg1_1.png"));
+        addImageResource("MAIN_BG1_3", new ImageData("./Resource/bg1_2.png"));
     }
 
     public static BufferedImage getImage(String resourceName, String subImageName) throws IOException {

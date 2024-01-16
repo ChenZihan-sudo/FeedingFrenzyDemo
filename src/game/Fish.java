@@ -51,6 +51,8 @@ public class Fish {
         leftTowardImage = fishImage;
         rightTowardImage = Utils.revertImage(fishImage);
 
+        this.fishImage = rightTowardImage;
+
         fish = frame.setLabelPaint(new LabelPaintCallback() {
             @Override
             public void call(Graphics g) throws IOException {

@@ -61,6 +61,14 @@ public class GameMain extends PageBase {
         // Mask layer
         MaskLayer maskLayer = frame.setMaskLayer();
         PageManager.addComponent(200, pageName, "maskLayer", maskLayer, new ComponentInfo(false));
+
+        // Background item
+        JLabel back_item_1 = frame.setBackground(DataStorager.getImage("MAIN_BG1_1"), 0,470);
+        PageManager.addComponent(5, pageName, "backItem1", back_item_1);
+        JLabel back_item_2 = frame.setBackground(DataStorager.getImage("MAIN_BG1_2"), 520, 540);
+        PageManager.addComponent(5, pageName, "backItem2", back_item_2);
+        JLabel back_item_3 = frame.setBackground(DataStorager.getImage("MAIN_BG1_3"), 900, 464);
+        PageManager.addComponent(5, pageName, "backItem3", back_item_3);
     }
 
     BufferedImage fishImage = DataStorager.getImage("FISH_SELF0", "FISH_EAT0");

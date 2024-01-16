@@ -94,7 +94,7 @@ public class GameDriver {
             public void mouseMoved(MouseEvent e) {
                 Point point = e.getPoint();
                 motionCb.call(point);
-                System.out.println("Mouse Position: " + point);
+                // System.out.println("Mouse Position: " + point);
             }
 
         };

@@ -1,6 +1,8 @@
 package src.utils;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.WritableRaster;
 import java.util.HashMap;
 
 public class Utils {
@@ -22,7 +24,7 @@ public class Utils {
     public static BufferedImage revertImage(BufferedImage image) {
         // Create a new image
         BufferedImage flippedImage = new BufferedImage(image.getWidth(), image.getHeight(),
-                BufferedImage.TYPE_INT_RGB);
+                BufferedImage.TYPE_INT_ARGB);
 
         // Horizontal flip
         for (int y = 0; y < image.getHeight(); y++) {
