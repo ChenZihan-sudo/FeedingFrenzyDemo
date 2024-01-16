@@ -64,7 +64,8 @@ public class Index extends PageBase {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("Button touched");
+                        System.out.println("achi");
+                        PageManager.switchPageTo("Achievement");
                     }
                 });
         PageManager.addComponent(1, pageName, "achivementBtn", achivementBtn);

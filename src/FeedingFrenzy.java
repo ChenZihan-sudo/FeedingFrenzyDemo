@@ -10,6 +10,7 @@ import src.framework.DataStorager;
 import src.framework.PageManager;
 import src.framework.SwingFramer;
 import src.game.GameDriver;
+import src.pages.Achievement;
 import src.pages.GameMain;
 import src.pages.Index;
 import src.pages.Loading;
@@ -35,6 +36,7 @@ public class FeedingFrenzy {
         Index indexFrame = new Index();
         Loading loading = new Loading();
         GameMain gameMain = new GameMain();
+        Achievement achievement = new Achievement();
 
         // * Switch to index page.
         // PageManager.switchPageTo("Index");
@@ -45,4 +47,5 @@ public class FeedingFrenzy {
 
         frame.setVisible(true);
     }
+
 }
